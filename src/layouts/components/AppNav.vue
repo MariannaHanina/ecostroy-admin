@@ -33,9 +33,7 @@ export default defineComponent({
   name: 'AppMenu',
   setup() {
     const routes = useRouter().getRoutes();
-    console.log('routes', routes);
 
-    // const filterRoutes = (route: RouteRecordRaw) => route.meta?.navPart;
     const filterFirstLevel = (route: RouteRecordRaw) => route.meta?.navPart == true;
     const filterByNavPart = (name: symbol) => routes.filter(
       (route: RouteRecordRaw) => route.meta?.navPart === name
@@ -49,7 +47,7 @@ export default defineComponent({
     const items = filteredFirstLevel.map(({name, path, meta}: RouteRecordRaw) => ({
       path,
       name: meta?.navName,
-      subitems: name ? filterByNavPart(name).map(formatRoute) : [],
+      subitems: name ? filterByNavPart(name as symbol).map(formatRoute) : [],
     }));
 
     return {
