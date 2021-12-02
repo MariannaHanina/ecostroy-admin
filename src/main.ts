@@ -8,6 +8,8 @@ import './assets/tailwind.css';
 
 import router from './router';
 
+import '@/modules/index';
+
 
 const vuetify = createVuetify();
 
