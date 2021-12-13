@@ -1,0 +1,20 @@
+<template>
+  <section>
+    <heading-level-1>Подвал</heading-level-1>
+    <div>
+      <v-form>
+        <v-textarea 
+          label="Описание"
+          required
+        />
+        <v-textarea 
+          label="Права"
+          required
+        />
+        <v-btn color="success">
+          Сохранить
+        </v-btn>
+      </v-form>
+    </div>
+  </section>
+</template>
