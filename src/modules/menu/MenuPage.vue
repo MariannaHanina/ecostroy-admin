@@ -2,7 +2,12 @@
   <section>
     <heading-level-1>Меню сайта</heading-level-1>
     <div>
-      <v-form>
+      <v-form
+        ref="form"
+        v-model="valid"
+        lazy-validation
+        @submit="saveMenu"
+      >
         <v-list vertical>
           <template
             v-for="item in menu"
@@ -56,7 +61,10 @@
             </v-item-group>
           </template>
         </v-list>
-        <v-btn color="success">
+        <v-btn
+          color="success"
+          @click="validateMenu"
+        >
           Сохранить
         </v-btn>
       </v-form>
@@ -67,13 +75,26 @@
 <script lang="ts">
 import { defineComponent, ref, onMounted } from 'vue';
 import { useStore } from 'vuex';
+import { TMenuItem } from './types';
 
 export default defineComponent({
   name: 'MenuPage',
   setup() {
     const store = useStore();
-    const menu = ref([]);
+    const menu = ref([] as TMenuItem[]);
     const fetchMenu = () => store.dispatch('menu/fetchMenu');
+    const updateMenu = (menu: TMenuItem[]) => store.dispatch('menu/updateMenu', menu);
+
+    const form = ref();
+    const valid = ref(false);
+    const saveMenu = () => {
+      const menuValue = menu.value as TMenuItem[];
+      updateMenu(menuValue);
+    }
+
+    const validateMenu = (e: Event) => {
+      form.value.submit(e);
+    }
 
     onMounted(async () => {
       await fetchMenu();
@@ -81,7 +102,11 @@ export default defineComponent({
     });
     
     return {
+      form,
       menu,
+      valid,
+      saveMenu,
+      validateMenu,
     };
   },
 })
