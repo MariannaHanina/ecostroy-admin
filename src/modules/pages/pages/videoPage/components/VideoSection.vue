@@ -4,20 +4,20 @@
       {{title}}
     </heading-level-2>
     <div class="grid grid-cols-3 gap-10 mb-10">
-      <v-card
-         v-for="v in video"
+      <text-media-block
+        v-for="v in video"
         :key="v._id"
-      >
-        <v-card-text>
-          <text-media-block :info="video" />
-        </v-card-text>
-       </v-card>
+        :init-info="v"
+        media="video"
+        @save="saveVideo"
+      /> 
     </div>
   </article>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
+import { useStore } from 'vuex';
 import { TVideo } from '../types';
 
 export default defineComponent({
@@ -30,6 +30,14 @@ export default defineComponent({
     video: {
       type: Array as PropType<TVideo[]>,
       required: true
+    }
+  },
+  setup() {
+    const store = useStore();
+    const saveVideo = (video: TVideo) => store.dispatch('video/updateOneVideo', video);
+
+    return {
+      saveVideo
     }
   }
 })
