@@ -1,7 +1,7 @@
 <template>
   <section>
     <heading-level-1>Страница Видео</heading-level-1>
-    <page-slogan />
+    <page-slogan type="video" />
     <video-section
       title="Последние видео"
       class="mt-10"
@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import PageSlogan from '@/modules/pages/components/PageSlogan.vue';
+import PageSlogan from '@/modules/pages/components/pageSlogan/PageSlogan.vue';
 import VideoSection from './components/VideoSection.vue';
 
 export default defineComponent({

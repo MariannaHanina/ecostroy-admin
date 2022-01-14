@@ -2,8 +2,8 @@
   <section>
     <heading-level-1>Главная страница</heading-level-1>
     <div>
-      <page-slogan />
-      <service-cards class="mb-10" />
+      <page-slogan type="main" />
+      <service-cards class="my-10" />
       <about-company />
     </div>
   </section>
@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import PageSlogan from '@/modules/pages/components/PageSlogan.vue';
+import PageSlogan from '@/modules/pages/components/pageSlogan/PageSlogan.vue';
 import ServiceCards from './components/ServiceCards.vue';
 import AboutCompany from './components/AboutCompany.vue';
 

@@ -1,6 +1,9 @@
 import './contacts/index';
 import './menu/index';
 import './pages/index';
+
+import './pages/components/pageSlogan/index';
+
 import './pages/pages/mainPage/index';
 import './pages/pages/projectsPage/index';
 import './pages/pages/videoPage/index';

@@ -1,7 +1,7 @@
 <template>
   <section>
     <heading-level-1>Страница Галерея</heading-level-1>
-    <page-slogan />
+    <page-slogan type="galleries" />
     <galleries-description />
     <text-media-block />
   </section>
@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import PageSlogan from '@/modules/pages/components/PageSlogan.vue';
+import PageSlogan from '@/modules/pages/components/pageSlogan/PageSlogan.vue';
 import GalleriesDescription from './components/GalleriesDescription.vue';
 
 export default defineComponent({
